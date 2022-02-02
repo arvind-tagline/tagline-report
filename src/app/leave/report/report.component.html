@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-sm-6 m-3 d-flex justify-content-center">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="row d-flex justify-content-between">
+                <div class="form-group col-sm-6">
+                    <label class="form-label">Client Name</label>
+                    <input type="text" class="form-control" formControlName="clientName"
+                        placeholder="Enter Client Name">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="form-label">Project Name</label>
+                    <input type="text" class="form-control" formControlName="projectName"
+                        placeholder="Enter Project Name">
+                </div>
+            </div>
+            <div class="row">
+                <label class="form-label">List of Completed Tasks :</label>
+                <ng-container formArrayName="completed"
+                    *ngFor="let complete of myForm.get('completed')['controls']; let i=index;">
+                    <div class="col-sm-9 mt-2">
+                        <input type="text" class="form-control" [formControlName]='i' placeholder="Completed Task">
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2" *ngIf="button">
+                        <button class="btn custom-btn-color" (click)="removeCompletedTask()"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="addCompletedTask()"><i
+                                class="fas fa-plus"></i></button>
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="row">
+                <label class="form-label">List of In-Progress Tasks:</label>
+                <ng-container formArrayName="progressTask"
+                    *ngFor="let progress of myForm.get('progressTask')['controls']; let i=index;">
+                    <div class="col-sm-9 mt-2">
+                        <input type="text" class="form-control" [formControlName]="i" placeholder="In Progress Task">
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="addProgressTask()"><i
+                                class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="removeProgressTask()"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <label class="form-label">List of Pending Tasks:</label>
+                <ng-container formArrayName="pendingTask"
+                    *ngFor="let progress of myForm.get('pendingTask')['controls']; let i=index;">
+                    <div class="col-sm-9 mt-2">
+                        <input type="text" class="form-control" [formControlName]="i" placeholder="Pending Task">
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="addPendingTask()"><i
+                                class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="removePendingTask()"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <label class="form-label">Queries:</label>
+                <ng-container formArrayName="queries"
+                    *ngFor="let progress of myForm.get('queries')['controls']; let i=index;">
+                    <div class="col-sm-9 mt-2">
+                        <input type="text" class="form-control" [formControlName]="i" placeholder="Queries">
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="addQueries()"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="removeQueries()"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <label class="form-label">Notes:</label>
+                <ng-container formArrayName="notes"
+                    *ngFor="let progress of myForm.get('notes')['controls']; let i=index;">
+                    <div class="col-sm-9 mt-2">
+                        <input type="text" class="form-control" [formControlName]="i" placeholder="Notes">
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="addNote()"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="col-sm-1 me-2 custom-color mt-2">
+                        <button class="btn custom-btn-color" (click)="removeNote()"><i
+                                class="fas fa-trash"></i></button>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+</div>
